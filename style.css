@@ -1,22 +1,27 @@
 .addclass{
-    align-content: center; 
+    align-content: center;
+    font-family: 'DM Serif Display',sans-serif; 
     margin: 0 auto;
     align-items: center;
     padding: 100px; 
-    height: 70vh;  
     background-image: url(download.jpg); 
     background-size: cover;
 }
 
 .addclass table tr td{
     font-size: 24px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'DM Serif Display',sans-serif;
+    padding: 5px;
 }
 .addclass table tr td input{
     font-size: 24px;
+    border: none;
+    height: 40px;
+    border-radius: 10px;
 }
 .addclass #btn{
     color: #fff;
+    font-family: 'DM Serif Display',sans-serif;
     background-color: black;
     border: none;
     font-size: 24px;

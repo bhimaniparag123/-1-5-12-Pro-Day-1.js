@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Information</title>
+    <title>Product-Information</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Fonts.css">
 </head>
 <body>
     
@@ -21,7 +22,7 @@
             </tr>
             <tr>
                 <td>Price</td>
-                <td><input type="text" name="addpri" id="addpri"></td>
+                <td><input type="number" name="addpri" id="addpri"></td>
             </tr>
             <tr>
                 <td>Catagory</td>
@@ -32,8 +33,49 @@
                 <td><button type="submit" id="btn">add to cart</button></td>
             </tr>
         </table>
+<hr>
+    
+    <div id="editModel" class="EditModel" style="display: none;">
+        <table>
+            <tr>
+                <td>Product-Name:</td>
+                <td><input type="text" id="editName"></td>
+            </tr>
+            <tr>
+                <td>description</td>
+                <td><input type="email" id="editEmail"></td>
+            </tr>
+            <tr>
+                <td>Category:</td>
+                <td><input type="password" id="editPass"></td>
+            </tr>
+            <tr>
+                <td>Price:</td>
+                <td><input type="password" id="editPass"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button id="updateBtn">Update User</button></td>
+            </tr>
+        </table>
     </div>
     
+
+    <div>
+        <table border="1">
+            <h1>Product Details</h1>
+            <tr>
+                <td>Sr. No</td>
+                <td>Product-Title</td>
+                <td>description</td>
+                <td>Category</td>
+                <td>Price</td>
+            </tr>
+            <tbody id="tbody"></tbody>
+        </table>
+    </div>
+</div>
+
    
 
     <script src="Index.js"></script>
