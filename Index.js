@@ -1,89 +1,89 @@
-let Productname = document.getElementById('addName');
-let description = document.getElementById('adddes');
-let Category = document.getElementById('addcat');
-let Price = document.getElementById('addpri');
-const button = document.getElementById('btn');
+const productTitle = document.getElementById("productTitle");
+const productDescription = document.getElementById("productDescription");
+const productCategory = document.getElementById("productCategory");
+const productPrice = document.getElementById("productPrice");
+const addProductBtn = document.getElementById("addProductBtn");
+const updateProductBtn = document.getElementById("updateProductBtn");
+const productCards = document.getElementById("productCards");
 
-const editName = document.getElementById('editName');
-const editdes = document.getElementById('editdes');
-const editcat = document.getElementById('editcat');
-const editpri = document.getElementById('editpri');
-const updateBtn = document.getElementById('updateBtn');
+let products = JSON.parse(localStorage.getItem("products")) || [];
+let editIndex = null;
 
-const tbody = document.querySelector("#tbody");
-const addModel = document.querySelector("#addModel");
-const editModel = document.querySelector("#editModel");
-
-let updateIndex = -1;
-
-button.addEventListener('click', () => {
-    let data = JSON.parse(localStorage.getItem('pro')) || [];
-    data.push({
-        Productname: Productname.value,
-        description: description.value,
-        Category: Category.value,
-        Price: Price.value
-    });
-    localStorage.setItem('pro', JSON.stringify(data));
-    loadData();
-    addNmae.value = "";
-    adddec.value = "";
-    addcat = "";
-    addpri = "";
-});
-
-const loadData = () => {
-    const data = JSON.parse(localStorage.getItem('pro')) || [];
-    let result = "";
-    data.forEach((pro, index) => {
-        result += `
-            <tr>
-                <td>${index + 1}</td>
-                <td>${pro.Productname}</td>
-                <td>${pro.description}</td>
-                <td>${pro.Category}</td>
-                <td>${pro.Price}</td>
-            </tr>
+const renderProducts = () => {
+    productCards.innerHTML = "";
+    products.forEach((product, index) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+            <h3><strong>ProductName:</strong>${product.title}</h3>
+            <p><strong>Description:</strong> ${product.description}</p>
+            <p><strong>Category:</strong> ${product.category}</p>
+            <p><strong>Price:</strong> $${product.price.toFixed(2)}</p>
         `;
+        productCards.appendChild(card);
     });
-    tbody.innerHTML = result;
 };
 
-const deleteData = (index) => {
-    const data = JSON.parse(localStorage.getItem('pro'));
-    data.splice(index, 1);
-    localStorage.setItem('pro', JSON.stringify(data));
-    loadData();
-};
-
-const editData = (index) => {
-    const data = JSON.parse(localStorage.getItem('pro'));
-    const pro = data[index];
-
-    editName.value = pro.Productname;
-    editdes.value = pro.description;
-    editcat.value = pro.Category;
-    editpri.value = pro.Price;
-
-    addModel.style.display = "none";
-    editModel.style.display = "block";
-
-    updateIndex = index;
-};
-
-updateBtn.addEventListener("click", () => {
-    const data = JSON.parse(localStorage.getItem('pro'));
-    data[updateIndex] = {
-        Productname: editName.value,
-        description: editdes.value,
-        Category: editcat.value,
-        Price: editpri.value
+const addProduct = () => {
+    if (!productTitle.value || !productDescription.value || !productCategory.value || !productPrice.value) {
+        alert("Please fill out all fields!");
+        return;
+    }
+    const newProduct = {
+        title: productTitle.value,
+        description: productDescription.value,
+        category: productCategory.value,
+        price: parseFloat(productPrice.value),
     };
-    localStorage.setItem('pro', JSON.stringify(data));
-    loadData();
-    editModel.style.display = "none";
-    addModel.style.display = "block";
-    updateIndex = -1;
-});
+    products.push(newProduct);
+    localStorage.setItem("products", JSON.stringify(products));
+    renderProducts();
+    clearForm();
+};
 
-loadData();
+const editProduct = (index) => {
+    const product = products[index];
+    productTitle.value = product.title;
+    productDescription.value = product.description;
+    productCategory.value = product.category;
+    productPrice.value = product.price;
+    editIndex = index;
+    addProductBtn.style.display = "none";
+    updateProductBtn.style.display = "inline-block";
+};
+
+const updateProduct = () => {
+    if (!productTitle.value || !productDescription.value || !productCategory.value || !productPrice.value) {
+        alert("Please fill out all fields!");
+        return;
+    }
+    products[editIndex] = {
+        title: productTitle.value,
+        description: productDescription.value,
+        category: productCategory.value,
+        price: parseFloat(productPrice.value),
+    };
+    localStorage.setItem("products", JSON.stringify(products));
+    renderProducts();
+    clearForm();
+    addProductBtn.style.display = "inline-block";
+    updateProductBtn.style.display = "none";
+    editIndex = null;
+};
+
+const deleteProduct = (index) => {
+    products.splice(index, 1);
+    localStorage.setItem("products", JSON.stringify(products));
+    renderProducts();
+};
+
+const clearForm = () => {
+    productTitle.value = "";
+    productDescription.value = "";
+    productCategory.value = "";
+    productPrice.value = "";
+};
+addProductBtn.addEventListener("click", addProduct);
+updateProductBtn.addEventListener("click", updateProduct);
+
+renderProducts();
