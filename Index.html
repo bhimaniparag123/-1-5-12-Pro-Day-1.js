@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Local-Storage Project</title>
+    <title>Local-Storage into Cart</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+
+    <a href="Product.html" style="margin: 0 auto;">go to cart</a>
     <form>
         <h2>Add Product</h2>
         <div class="form-group">
@@ -17,24 +18,24 @@
         </div>
         <div class="form-group">
             <label for="productDescription">Description</label>
-            <input type="text" id="productDescription" placeholder="product description">
+            <input type="text" id="productDescription" placeholder="Product description">
         </div>
         <div class="form-group">
             <label for="productCategory">Category</label>
-            <input type="text" id="productCategory" placeholder="product category">
+            <input type="text" id="productCategory" placeholder="Product category">
         </div>
         <div class="form-group">
             <label for="productPrice">Price</label>
-            <input type="number" id="productPrice" placeholder="product price">
+            <input type="number" id="productPrice" placeholder="Product price">
         </div>
-        <button class="btn" id="addProductBtn">Add to Cart</button>
-        <button class="btn" id="updateProductBtn" style="display: none;">Update Product</button>
-        
+        <button type="button" class="btn" id="addProductBtn">Add Product</button>
+        <button type="button" class="btn" id="updateProductBtn" style="display: none;">Update Product</button>
     </form>
-    <div class="cards" id="productCards">
-    </div>
 
-<script src="Index.js"></script>
+    <div class="cards" id="productCards"></div>
+
+    
+    <script src="Index.js"></script>
 </body>
 
 </html>

@@ -15,10 +15,11 @@ const renderProducts = () => {
         const card = document.createElement("div");
         card.className = "card";
         card.innerHTML = `
-            <h3><strong>ProductName:</strong>${product.title}</h3>
+            <p><strong>Product-title:${product.title}</p>
             <p><strong>Description:</strong> ${product.description}</p>
             <p><strong>Category:</strong> ${product.category}</p>
             <p><strong>Price:</strong> $${product.price.toFixed(2)}</p>
+            <button class="btn Add-to-cart-btn" onclick="Add to cart(${index})">Add to cart</button>
         `;
         productCards.appendChild(card);
     });
@@ -83,6 +84,7 @@ const clearForm = () => {
     productCategory.value = "";
     productPrice.value = "";
 };
+
 addProductBtn.addEventListener("click", addProduct);
 updateProductBtn.addEventListener("click", updateProduct);
 

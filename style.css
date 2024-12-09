@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    background-image: url(download.jpg);
+    background-image: url(pexels-alena-koval-233944-886521\ \(1\).jpg);
     background-size: cover;
 }
 
@@ -39,7 +39,7 @@ form{
 .btn {
     display: inline-block;
     padding: 10px 15px;
-    background-color: #ffff;
+    background-color: #06fe38;
     color: #000;
     border: none;
     border-radius: 5px;
@@ -92,4 +92,15 @@ form{
 
 .card-actions button:hover {
     background-color: #0056b3;
+}
+
+a{
+    text-align: center;
+    background-color: #007bff;
+    padding: 20px;
+    color: #ffff;
+    margin-top: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    align-content: center;
 }
